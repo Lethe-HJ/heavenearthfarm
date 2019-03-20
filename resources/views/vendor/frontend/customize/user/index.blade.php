@@ -13,7 +13,7 @@
 @section('content')
     <div class="layui-container fly-marginTop fly-user-main">
 
-        @include('frontend::user._side', ['side'=>'index'])
+        @include('frontend::user._side', ['side'=>'frontend.customize.index'])
 
         <div class="fly-panel fly-panel-user" pad20>
             <!--

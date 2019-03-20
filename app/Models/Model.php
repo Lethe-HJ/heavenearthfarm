@@ -14,8 +14,9 @@
  */
 
 namespace App\Models;
-
-class Model extends Wanglelecc\Laracms\Models\Model
+use Illuminate\Database\Eloquent\Model as EloquentModel;
+//class Model extends Wanglelecc\Laracms\Models\Model
+class Model extends EloquentModel
 {
 
 }
