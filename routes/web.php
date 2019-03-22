@@ -30,6 +30,8 @@ Route::group([ 'middleware' => ['laracms.frontend'], ], function () {
 
     # 站点首页
     Route::get('/', 'IndexController@index')->name('index');
+    # 文章详情页
+    Route::get('/article/show/{navigation}/{category}/{id}', 'ArticleController@show')->name('show');
 
     # 原始首页
 //    Route::get('welcome', 'WelcomeController@index')->name('welcome');

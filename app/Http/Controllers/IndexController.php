@@ -19,44 +19,38 @@ use Illuminate\Support\Facades\DB;
 class IndexController extends Controller
 {
     public function index(){
-//        for($i=1; $i<=4; $i++)
-//            $categr_li[] = [Category::show($i, 'article')];
-        $data=[];
-        $data["area0"] = ["pict"=>"images/frontend/logo.png", "categr_li"=>Category::categryName()];//导航栏
-        $data["area1"] = ["slideshow"=>get_block("2018_03_04_224524_index_slide_block")];//轮播图
-        for($i=1;$i<=3;$i++){
-            $data["area2"][] = ["img"=>"storage/".Article::getImg("区域2_商城链接".$i), "word"=>strip_tags(Article::getContent("区域2_商城链接".$i))];
+        for($i=0;$i<=9;$i++){
+            if($i==1){continue;}
+            $data[$i]=self::contentHandler(Article::getContent("区域".$i));
         }
-        $data["area3"] = [
-            "img"=>[
-                "title"=>"storage/".Article::getImg("区域3_标题图片"),
-                "leftimg"=>"storage/".Article::getImg("区域3_左部图片"),
-            ],
-            "word"=>explode("==========", strip_tags(Article::getContent("区域3_文字与链接"))),
-        ];
+        $data[0]["categry"] = Category::categryName();
+        $data[1] = ["slideshow"=>get_block("2018_03_04_224524_index_slide_block")];//轮播图
+        dump($data);
 
-        $data["area4"] = [
-            "img"=>[
-//                "top"=>"images/frontend/main_logo.png",
-                "top"=>"storage/".Article::getImg("区域4_顶端图片"),
-                "middle"=>"storage/".Article::getImg("区域4_中间图片"),
-                "button_bg"=>"storage/".Article::getImg("区域4_底端背景")
-            ],
-            "threemix"=>[
-                "img"=>[
-                    "storage/".Article::getImg("区域4_底部框框1"),
-                    "storage/".Article::getImg("区域4_底部框框2"),
-                    "storage/".Article::getImg("区域4_底部框框3"),
-                ],
-                "word"=>[
-                    explode("==========", strip_tags(Article::getContent("区域4_底部框框1"))),
-                    explode("==========", strip_tags(Article::getContent("区域4_底部框框2"))),
-                    explode("==========", strip_tags(Article::getContent("区域4_底部框框3"))),
-                ],
-            ]
-        ];
-
-        //var_dump(Category::show('1'));
-        return laravel_frontend_view('index1', ['data' => $data]);
+        return laravel_frontend_view('index', ['data' => $data]);
     }
+
+    public function contentHandler($str){
+        //首先获取图片链接
+        preg_match_all("/storage.+?(\.gif|\.jpeg|\.png|\.jpg|\.bmp)/",$str,$img);
+        $str = strip_tags($str);
+        $word=explode("==========", $str);
+        preg_match_all("/文章标题ttt(.+?)ttt/",$str,$title);
+//        dump($title[1]);
+        foreach($title[1] as $title){
+            if(!empty($title)){
+//                dump($title);
+                $link[]="article/show/2/2/".Article::titleToId($title);
+//                dump($link);
+            }
+        }
+
+        return [
+            "img"=>$img[0],
+            "word"=>array_values(array_filter($word)),
+            "link"=>( $link= isset($link) ? $link:[] )
+        ];
+    }
+
+
 }

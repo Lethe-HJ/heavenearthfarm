@@ -29,6 +29,18 @@ class Article extends Model
     public static function getContent($condition){
         return DB::table('articles')->where("title", $condition)->value("content");
     }
+
+    public static function getArticle($condition){
+        return DB::table('articles')->where("id", $condition)->first();
+    }
+
+    public static function titleToId($title){
+        if(empty($title)){
+            return '???';
+        }
+        return DB::table('articles')->where("title", $title)->value("id");
+    }
+
 //    use SoftDeletes;
 //    use WithCommonHelper;
 //    use Searchable;
