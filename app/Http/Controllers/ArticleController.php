@@ -21,5 +21,15 @@ class ArticleController extends Controller
         return laravel_frontend_view('show', compact('getContent'));
     }
 
+    public function edit(Article $article, CategoryHandler $categoryHandler)
+    {
+        $this->authorize('update', $article);
+        $articleCategorys = $article->categorys()->pluck('category_id')->toArray();
+        $category = $categoryHandler->web($categoryHandler->select($categoryHandler->getCategorys('article')), $articleCategorys);
+
+        return backend_view('article.create_and_edit', compact('article', 'category'));
+    }
+
+
 
 }

@@ -42,5 +42,11 @@ Route::group(['domain' => config('administrator.domain'), 'prefix' => config('ad
     # 后端示例路由
     Route::get('example', 'ExampleController@index')->name('administrator.example');
 
+    # 区块相关路由
+//    Route::resource('blocks', 'Wanglelecc\Laracms\ArticlesController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
+    Route::resource('articles', 'ContentListController', ['only' => ['index', "edit"]]);
+    Route::resource('blocks', 'ContentListController', ['only' => ['index']]);
+
+
     #Append Route
 });

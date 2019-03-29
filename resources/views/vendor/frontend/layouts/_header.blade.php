@@ -13,11 +13,11 @@
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="{{URL::asset('js/bootstrap/docs/favicon.ico')}}">
+    <link rel="icon" href="../../favicon.ico">
     <title>Fixed Top Navbar Example for Bootstrap</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="{{URL::asset('js/bootstrap/dist/css/bootstrap.css')}}" rel="stylesheet">
+    <link href="{{URL::asset('vendor/bootstrap/dist/css/bootstrap.css')}}" rel="stylesheet">
     <!--<link href="../static/common/css/index.css" rel="stylesheet">-->
     <link href="{{URL::asset('css/index2.css')}}" rel="stylesheet">
 </head>
@@ -30,7 +30,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a><img src="{{URL::asset('images/logos.png')}}"></a>
+        <a><img src="{{URL::asset('images/frontend/logo.png')}}"></a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
@@ -43,3 +43,4 @@
         </ul>
     </div><!--/.nav-collapse -->
 </div>
+

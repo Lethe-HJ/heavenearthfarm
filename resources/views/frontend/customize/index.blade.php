@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
-    <title>Fixed Top Navbar Example for Bootstrap</title>
+    <title>天地农耕 首页</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{{URL::asset('vendor/bootstrap/dist/css/bootstrap.css')}}" rel="stylesheet">
@@ -896,8 +896,10 @@
 </head>
 
 <body>
+
+<!-- area0 start ------------------------------------------------------------------------------------------------------->
 <div class="container-fluid">
-    <!-- area0 start ------------------------------------------------------------------------------------------------------->
+
     <nav class="navbar navbar-default navbar-fixed-top" style="background-color: #fff">
         <div class="container">
             <div class="navbar-header">
@@ -922,8 +924,10 @@
 <!-- area0 end -->
 
 
-<!-- area1 start -------------------------------------------------------------------------------------------------------->
+
 <div class="container-fluid">
+
+    <!-- area1 start -------------------------------------------------------------------------------------------------------->
     <div id="myCarousel" class="carousel slide">
 
         <!-- 轮播（Carousel）指标 -->
@@ -968,8 +972,8 @@
             <div class="row">
                 @for($i=0;$i<count($data[2]["img"]);$i++)
                     <dl class="col-md-4 col-xs-4 text-center">
-                        <dd><img alt="" class="section1_img" src="{{URL::asset($data[2]["img"][$i])}}"/></dd>
-                        <dt class="section1_word">{{$data[2]["word"][$i]}}</dt>
+                        <dd><a href="{{$data[2]["link"][$i]}}" target="_blank"><img alt="" class="section1_img" src="{{URL::asset($data[2]["img"][$i])}}"/></a></dd>
+                        <dt class="section1_word"><a href="{{$data[2]["link"][$i]}}" target="_blank">{{$data[2]["word"][$i]}}</a></dt>
                     </dl>
                 @endfor
             </div>
@@ -989,9 +993,10 @@
                 <h1>{{$data[3]["word"][0]}}</h1>
                 <div class="secition3_word">{{$data[3]["word"][1]}}</div>
             </div>
-            <div class="xiangqin"><a href=""><img src="images/frontend/xiangqing.png"></a></div>
+            <div class="xiangqin"><a href="{{url($data[3]['link'][0])}}"><img src="images/frontend/xiangqing.png"></a></div>
         </div>
     </div>
+
     <!-- area3 end -->
 
     <!-- area4 start ------------------------------------------------------------------------------------------------------->
@@ -1031,52 +1036,33 @@
                 <p class="introduce_sentence">{{$data[5]["word"][$j++]}}</p>
             </div>
         @endfor
-        {{--<div class="introduce_word02">--}}
-            {{--<p class="introduce_title">{{$data[4]["word"][0]}}</p>--}}
-            {{--<p class="introduce_sentence">{{$data[4]["word"][0]}}</p>--}}
-        {{--</div>--}}
-        {{--<div class="introduce_word03">--}}
-            {{--<p class="introduce_title text-right">{{$data[4]["word"][0]}}</p>--}}
-            {{--<p class="introduce_sentence">{{$data[4]["word"][0]}}</p>--}}
-        {{--</div>--}}
-        {{--<div class="introduce_word04">--}}
-            {{--<p class="introduce_title">{{$data[4]["word"][0]}}</p>--}}
-            {{--<p class="introduce_sentence">{{$data[4]["word"][0]}}</p>--}}
-        {{--</div>--}}
-        {{--<div class="introduce_word05">--}}
-            {{--<p class="introduce_title">{{$data[4]["word"][0]}}</p>--}}
-            {{--<p class="introduce_sentence">{{$data[4]["word"][0]}}</p>--}}
-        {{--</div>--}}
-        {{--<div class="introduce_word06">--}}
-            {{--<p class="introduce_title">{{$data[4]["word"][0]}}</p>--}}
-            {{--<p class="introduce_sentence">{{$data[4]["word"][0]}}</p>--}}
-        {{--</div>--}}
     </div>
 
     <div class="container-fluid section8 ">
         <div class="section8_left col-md-3  col-md-offset-1 container-fluid col-xs-12">
-            <img class="img1" src="{{URL::asset($data[6]["img"][0])}}">
+            {{--<img class="img1" src="{{URL::asset($data[6]["img"][0])}}">--}}
+            <img class="img1" src="{{URL::asset('images/frontend/line.png')}}">
             <h1>{{$data[6]["word"][0]}}</h1>
             <p>{{$data[6]["word"][1]}}</p>
-            <div class="img"><a href="article/show/2/2/1"><img src="{{URL::asset("images/frontend/xiangqing.png")}}"></a></div>
+            <div class="img"><a href="{{url($data[6]['link'][0])}}"><img src="{{URL::asset("images/frontend/xiangqing.png")}}"></a></div>
         </div>
 
         <div class="section8_right  center-block ">
             <div class="right_container col-md-9 text-center col-sm-12 col-md-offset-1">
                 <div class="species col-md-4 col-sm-4 ">
-                    <div><img  class="species_img" src="{{URL::asset($data[6]["img"][1])}}"></div>
+                    <div><img  class="species_img" src="{{URL::asset($data[6]["img"][0])}}"></div>
                     <div><p>{{$data[6]["word"][2]}}</p></div>
                     <div><img class="species_img01" src="{{URL::asset('images/frontend/line.png')}}"/></div>
                     <div class="species_word"><p>{{$data[6]["word"][3]}}</p></div>
                 </div>
                 <div class="species col-md-4 col-sm-4">
-                    <div><img class="species_img" src="{{URL::asset($data[6]["img"][2])}}"></div>
+                    <div><img class="species_img" src="{{URL::asset($data[6]["img"][1])}}"></div>
                     <div><p>{{$data[6]["word"][4]}}</p></div>
                     <div><img class="species_img01" src="{{URL::asset('images/frontend/line.png')}}"/></div>
                     <div class="species_word"><p>{{$data[6]["word"][5]}}</p></div>
                 </div>
                 <div class="species col-md-4 col-sm-4">
-                    <div> <img class="species_img" src="{{URL::asset($data[6]["img"][3])}}"></div>
+                    <div> <img class="species_img" src="{{URL::asset($data[6]["img"][2])}}"></div>
                     <div><p>{{$data[6]["word"][6]}}</p></div>
                     <div><img class="species_img01" src="{{URL::asset('images/frontend/line.png')}}"/></div>
                     <div class="species_word"><p>{{$data[6]["word"][7]}}</p></div>
@@ -1134,17 +1120,21 @@
                 <div class="store col-md-3 ">
                     <div class="store_tile">{{$data[8]["word"][0]}}</div>
                     <div class="taobao ">
-                        <img src="{{URL::asset($data[8]["img"][0])}}"/>
-                        <a>{{$data[8]["word"][1]}}</a>
+                        <a href="{{$data[8]["link"][0]}}"><img src="{{URL::asset($data[8]["img"][0])}}"/></a>
+                        <a href="{{$data[8]["link"][0]}}">{{$data[8]["word"][1]}}</a>
                     </div>
                     <div class="pinduoduo">
-                        <img src="{{URL::asset($data[8]["img"][1])}}"/>
-                        <a>{{$data[8]["word"][2]}}</a>
+                        <a href="{{$data[8]["link"][1]}}"><img src="{{URL::asset($data[8]["img"][1])}}"/></a>
+                        <a href="{{$data[8]["link"][1]}}">{{$data[8]["word"][2]}}</a>
                     </div>
                     <div class="weixin ">
-                        <img src="{{URL::asset($data[8]["img"][2])}}"/>
-                        <a>{{$data[8]["word"][3]}}</a>
+                        <a href="{{$data[8]["link"][1]}}"><img src="{{URL::asset($data[8]["img"][2])}}"/></a>
+                        <a href="{{$data[8]["link"][1]}}">{{$data[8]["word"][3]}}</a>
                     </div>
+                    {{--<div class="weixin ">--}}
+                        {{--<img src="{{URL::asset($data[8]["img"][2])}}"/>--}}
+                        {{--<a>{{$data[8]["word"][3]}}</a>--}}
+                    {{--</div>--}}
                 </div>
                 <div class="contact col-md-6 " id="contactHide">
                     <p>联系我们</p>
@@ -1153,7 +1143,8 @@
                             <ul class="list-inline text-center" style="padding-top: 20px">
                                 <li><img src="{{URL::asset('images/frontend/tel.png')}}"/></li>
                                 <li><ul class="list-unstyled">
-                                        <li>0736-7221688</li>
+                                        {{--<li>0736-7221688</li>--}}
+                                        <li>{{$data[10]["phone"]}}</li>
                                         <li><span style="font-size: 8px">24小时服务在线</span></li></ul></li>
                             </ul>
                         <li>
@@ -1172,8 +1163,8 @@
             </div>
         </div>
         <div class="footer1 col-md-12 col-xs-12 text-center">
-            <p>湖南天地农耕天地茶油有限公司版权所有2019 | 服务热线:400-000-5252</p>
-            <p>地址:湖南省常德市鼎城区周家电镇  | 邮箱:cdldngscy@163.com</p>
+            <p>{{$data[10]["name"]}} 版权所有{{$data[10]["create_year"]}} | 服务热线:{{$data[10]["phone"]}}</p>
+            <p>地址:{{$data[10]["address"]}}  | 邮箱:{{$data[10]["email"]}}</p>
         </div>
     </div>
     <!--附加-->
