@@ -5,13 +5,13 @@
 <aside class="main-sidebar">
     <section class="sidebar">
         <ul class="sidebar-menu" data-widget="tree">
-            <li class="@if($activeNavId == 'dashboard') active @endif">
+         <!--    <li class="@if($activeNavId == 'dashboard') active @endif">
                 <a href="{{route('administrator.dashboard')}}">
                     <i class="icon icon-dashboard"></i>
                     <span>仪表盘</span>
                     <span class="pull-right-container"></span>
                 </a>
-            </li>
+            </li> -->
 
             @foreach(config('administrator.menu') as $key1 => $menu)
                 @if(call_user_func($menu['permission']))

@@ -192,6 +192,8 @@
     @include('backend::common._delete_image_scripts',['elem' => '#delete_thumb', 'previewElem' => '#image_image', 'fieldElem' => '#form_thumb', ])
     @include('backend::common._select_image_scripts',['elem' => '#select_thumb', 'previewElem' => '#image_image', 'fieldElem' => '#form_thumb', 'folder'=>'article', 'object_id'=>$object_id ])
 
-    @include('backend::common._upload_aliyun_vod_scripts',['elem' => '#upload_video', 'previewElem' => '#video_title_h4', 'fieldIdElem' => '#upload_video_id', 'fieldTitleElem' => '#upload_video_title', 'fieldThumbElem' => '#upload_video_thumb', 'fieldImageElem' => '#video_thumb_image', 'folder'=>'article', 'object_id'=>$object_id])
+    {{--@include('backend::common._upload_aliyun_vod_scripts',['elem' => '#upload_video', 'previewElem' => '#video_title_h4', 'fieldIdElem' => '#upload_video_id', 'fieldTitleElem' => '#upload_video_title', 'fieldThumbElem' => '#upload_video_thumb', 'fieldImageElem' => '#video_thumb_image', 'folder'=>'article', 'object_id'=>$object_id])--}}
+    @include('backend::common._upload_vidoe_scripts',['elem' => '#upload_video', 'previewElem' => '#video_title_h4','fieldTitleElem' => '#upload_video_title', 'fieldThumbElem' => '#upload_video_thumb', 'fieldImageElem' => '#video_thumb_image', 'folder'=>'article', 'object_id'=>$object_id])
+
     @include('backend::common._delete_aliyun_vod_scripts',['elem' => '#delete_video', 'previewElem' => '#video_title_h4', 'fieldIdElem' => '#upload_video_id', 'fieldTitleElem' => '#upload_video_title', 'fieldThumbElem' => '#upload_video_thumb', 'fieldImageElem' => '#video_thumb_image', 'folder'=>'article', 'object_id'=>$object_id])
 @stop

@@ -19,9 +19,9 @@ use Illuminate\Support\Facades\DB;
  */
 class SiteMessage extends Model
 {
-    use SoftDeletes;
-    protected $table = 'settings';
-
+//    use SoftDeletes;
+//    protected $table = 'settings';
+//
     public static function getDetails(){
         return DB::table('settings')->pluck("value", "key");
     }

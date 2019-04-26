@@ -27,11 +27,25 @@ Route::group([ 'middleware' => ['laracms.frontend'], ], function () {
 
     # 前端示例路由
     Route::get('example', 'ExampleController@index')->name('example');
+    Route::get('test', 'IndexController@test');
 
     # 站点首页
     Route::get('/', 'IndexController@index')->name('index');
+    Route::get('/index_test', 'IndexController@index_test');
     # 文章详情页
     Route::get('/article/show/{navigation}/{category}/{id}', 'ArticleController@show')->name('show');
+    #企业文化页面
+    Route::get('/compnlect', 'EnterpriseLectureController@index');
+    Route::get('/compnlect_test', 'EnterpriseLectureController@index_test');
+    #新闻页面
+    Route::get('/news','NewsController@index')->name('news');
+    # 产品中心页面
+    Route::get('/prodcenter', 'ProduceController@index')->name('produce_index');
+    Route::get('/data/product', 'ProduceController@product');
+    #茶油文化页
+    Route::get('/teaoillect','TeaoilController@index')->name('teaoil');
+    #联系我们页面
+    Route::get('/contactus','ContactController@index')->name('contact');
 
     # 原始首页
 //    Route::get('welcome', 'WelcomeController@index')->name('welcome');

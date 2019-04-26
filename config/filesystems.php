@@ -118,7 +118,7 @@ return [
         
         // 视频
         'video' => [
-            'size_limit' => 5242880, // 单位：字节，默认：5MB
+            'size_limit' => 200*1024*1024, // 单位：字节，默认：5MB
             'allowed_ext' => ['mp4'],
         ],
 
@@ -126,7 +126,8 @@ return [
         'ueditor' => [
             "imageActionName" => "uploadimage",
             "imageFieldName" => "upload_file",
-            "imageMaxSize" => 5242880,
+//            "imageMaxSize" => 5242880,
+            "imageMaxSize" => 52428800,
             "imageAllowFiles" => [".png", ".jpg", ".jpeg", ".gif", ".bmp"],
             "imageCompressEnable" => true,
             "imageCompressBorder" => 1600,
@@ -155,7 +156,8 @@ return [
             "catcherActionName" => "catchimage",
             "catcherFieldName" =>  "source",
             "catcherUrlPrefix" =>  "",
-            "catcherMaxSize" =>  2048000,
+//            "catcherMaxSize" =>  2048000,
+            "catcherMaxSize" =>  20480000,
             "catcherAllowFiles" =>  [".png", ".jpg", ".jpeg", ".gif", ".bmp"],
         ],
         

@@ -1,0 +1,56 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: lenovo
+ * Date: 2019/3/18
+ * Time: 17:21
+ */
+/**
+ * 前台示例控制器
+ */
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+//use Wanglelecc\Laracms\Models\Category;
+use App\Models\Category;
+use App\Models\SiteMessage;
+use App\Models\Article;
+use Illuminate\Support\Facades\DB;
+use App\Common\MyLibs;
+
+class ProduceController extends Controller
+{
+    public function index(){
+        $data[0]=MyLibs::contentHandlers(Article::getContent("页面3区域0"));
+//        dump($data);
+        return laravel_frontend_view('prodcenter', compact('data'));
+    }
+
+    public function product(Request $request){
+        $cate = ["商品列表1","商品列表2"];
+        $product = MyLibs::contentHandlers(Article::getContent($cate[$request->catenum]));//从区块里获取全部商品信息
+        $pro_count = count($product["img"]);//计算商品条数
+        $limit = $request->limit;
+        $page_index = $request->page -1;
+        if($limit<1||$limit>$pro_count){
+            return false;
+        }
+        $page_count = ceil($pro_count/$limit);
+        if($page_index<0||$page_index>$page_count-1){
+            return false;
+        }
+
+        $start = $limit*$page_index;
+        $data["img"] = array_slice($product["img"],$start,$limit);
+        $data["link"] = array_slice($product["link"],$start,$limit);
+        $data["word"] = array_slice($product["word"],$start*4,4*$limit);
+        $data["msg"]["pagecount"] = $page_count;
+        $data["msg"]["curpage"] = $page_index + 1;
+        return $data;
+    }
+
+
+
+
+
+}

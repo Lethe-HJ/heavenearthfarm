@@ -31,9 +31,9 @@
                 @include('backend::layouts._header')
                 @include('backend::layouts._side')
                 <div class="content-wrapper {{ route_class() }}-content">
-                    <div class="content-header">
-                        @includeWhen($breadcrumb ?? true, 'backend::layouts._breadcrumb')
-                    </div>
+                    {{--<div class="content-header">--}}
+                        {{--@includeWhen($breadcrumb ?? true, 'backend::layouts._breadcrumb')--}}
+                    {{--</div>--}}
                     <div class="content-body">
                         <div class="container-fluid">
                             @yield('tab')

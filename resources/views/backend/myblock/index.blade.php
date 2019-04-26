@@ -11,12 +11,12 @@
 
     @php
         $categoryHandler = app(\Wanglelecc\Laracms\Handlers\CategoryHandler::class);
-        $categorys = $categoryHandler->select($categoryHandler->getCategorys('article'));
+        $categorys = $categoryHandler->select($categoryHandler->getCategorys('page'));
         $category_id = request('category', 0);
         $keyword = request('keyword', '');
         $begin_time = request('begin_time', '');
         $end_time = request('end_time', '');
-        $type = request('type', 'article');
+        $type = request('type', 'block');
     @endphp
 
 
@@ -44,31 +44,32 @@
                 {{--</div>--}}
             {{--</div>--}}
 
-            @if($articles->count())
+{{--            @if($articles->count())--}}
+            @if($data->count())
 
                 <form name="form-article-list" id="form-article-list" lay-filter="form-article-list" class="layui-form layui-form-pane2" method="POST" action="{{route('articles.order')}}">
                     <input type="hidden" name="_method" value="PUT">
                     {{ csrf_field() }}
                     <table class="table table-bordered">
                         <colgroup>
-                            <col width="30">
+                            {{--<col width="30">--}}
                             <col width="60">
                             <col width="80">
-                            <col>
+                            {{--<col>--}}
                             <col width="180">
-                            <col width="100">
-                            <col width="130">
+                            <col width="180">
+                            <col width="230">
                             <col width="100">
                             <col width="70">
-                            <col width="200">
+                            {{--<col width="200">--}}
                         </colgroup>
                         <thead>
                         <tr>
                             <th class="text-center"><input type="checkbox"></th>
-                            <th class="text-center">#</th>
+                            {{--<th class="text-center">#</th>--}}
                             <th class="text-center">排序</th>
                             <th class="text-center">标题</th>
-                            <th class="text-center">分类</th>
+                            {{--<th class="text-center">分类</th>--}}
                             <th class="text-center">作者</th>
                             <th class="text-center">添加时间</th>
                             <th class="text-center">添加人</th>
@@ -77,47 +78,52 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($articles as $index => $article)
+                        {{--@foreach($articles as $index => $article)--}}
+                        @foreach($data as $index => $article)
                             @php
                                 $categry = DB::table("article_category")->where('article_id', $article->id)->value('category_id');
+                                //dump($categry);
                             @endphp
-                            @if($categry == 7)
+                            {{--@if($categry == 7)--}}
                                 {{--过滤非区块内容 类别为不等于7--}}
                             <tr>
                                 <td class="text-center">
                                     <input type="hidden" name="id[]" value="{{$article->id}}">
                                     <input type="checkbox">
                                 </td>
-                                <td class="text-center">{{ $article->id }}</td>
+{{--                                <td class="text-center">{{ $article->id }}</td>--}}
                                 <td class="text-center">
                                     <input type="tel" name="order[]" class="form-control text-center" value="{{ $article->order  }}">
                                 </td>
-                                <td><a href="{{$article->getLink()}}" target="_blank">{{ $article->title  }}</a></td>
-                                <td class="text-center">{{ implode('，', $article->categorys->pluck('name')->toArray() ) }}</td>
+{{--                                <td><a href="{{$article->getLink()}}" target="_blank">{{ $article->title  }}</a></td>--}}
+                                <td style="text-align: center"><a href="#" target="_blank">{{ $article->title  }}</a></td>
+                                {{--<td class="text-center">{{ implode('，', $article->categorys->pluck('name')->toArray() ) }}</td>--}}
                                 <td class="text-center">{{ $article->author  }}</td>
-                                <td class="text-center">{{ $article->created_at->toDateString()}}</td>
-                                <td class="text-center">{{ $article->created_user->name}}</td>
+                                {{--<td class="text-center">{{ $article->created_at->toDateString()}}</td>--}}
+                                <td class="text-center">{{ $article->created_at}}</td>
+                                {{--<td class="text-center">{{ $article->created_user->name}}</td>--}}
+                                <td class="text-center">{{ $article->author}}</td>
                                 <td class="text-center">@switch($article->status)
                                         @case(0)<span class="label label-badge">隐藏</span>@break
                                         @case(1)<span class="label label-badge label-success">正常</span>@break
                                         @case(2)<span class="label label-badge label-danger">封禁</span>@break
                                     @endswitch</td>
                                 <td class="text-center">
-                                    <button type="button" data-type="ajax" data-url="{{ route('articles.multiple.files', [ $article->id, 'images', ]) }}" data-toggle="modal" class="btn btn-xs btn-warning form-multiple-files">多图</button>
-                                    <button type="button" data-type="ajax" data-url="{{ route('articles.multiple.files', [ $article->id, 'annex', ]) }}" data-toggle="modal" class="btn btn-xs btn-info form-multiple-files">附件</button>
-                                    <a href="{{ route('articles.edit', $article->id) }}?type={{$type}}&page=blocks" class="btn btn-xs btn-primary">编辑</a>
-                                    <a href="javascript:;" data-url="{{ route('articles.destroy', $article->id) }}?type={{$type}}" class="btn btn-xs btn-danger form-delete">删除</a>
+                                    {{--<button type="button" data-type="ajax" data-url="{{ route('articles.multiple.files', [ $article->id, 'images', ]) }}" data-toggle="modal" class="btn btn-xs btn-warning form-multiple-files">多图</button>--}}
+                                    {{--<button type="button" data-type="ajax" data-url="{{ route('articles.multiple.files', [ $article->id, 'annex', ]) }}" data-toggle="modal" class="btn btn-xs btn-info form-multiple-files">附件</button>--}}
+                                    <a href="{{ route('articles.edit', $article->id) }}?type={{$type}}" class="btn btn-xs btn-primary">编辑</a>
+                                    <!--<a href="javascript:;" data-url="{{ route('articles.destroy', $article->id) }}?type={{$type}}" class="btn btn-xs btn-danger form-delete">删除</a>-->
                                 </td>
                             </tr>
-                            @endif
+                            {{--@endif--}}
                         @endforeach
                         </tbody>
                     </table>
                 </form>
 
-                <div id="paginate-render">
-                    {{$articles->links('pagination::backend')}}
-                </div>
+                {{--<div id="paginate-render">--}}
+                    {{--{{$articles->links('pagination::backend')}}--}}
+                {{--</div>--}}
             @else
                 <div class="alert alert-info alert-block">暂无数据</div>
             @endif

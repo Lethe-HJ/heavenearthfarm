@@ -36,7 +36,8 @@ class Category extends Model
     * 查询分类名列表
     */
     public static function categryName(){
-        return DB::table('categorys')->where("type", "article")->pluck("name");
+//        return DB::table('categorys')->where("type", "article")->pluck("name", "link");
+        return DB::table('categorys')->where("type", "article")->select("name", "link")->get();
     }
 
 //    public function articles(){

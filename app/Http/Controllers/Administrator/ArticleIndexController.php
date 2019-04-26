@@ -21,8 +21,9 @@ class ArticleIndexController extends Controller
     public function index($navigation = 0, Category $articleCategory, Article $article)
     {
         $category = $articleCategory;
-        $articles = $category->articles()->active()->ordered()->recent()->paginate(10);
-        dump($articles);
+        $articles = $category->articles()->active()->ordered()->recent()->orderBy('order', 'desc')->paginate(15);
+
+        //        dump($articles);
 //        return frontend_view('article.'.$articleCategory->getTemplate('list'), compact('navigation','category','articles'));
     }
 
